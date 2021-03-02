@@ -11,18 +11,12 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+const axios = require('axios');
 
 function App() {
     
   const [email ,setEmail]=useState('');
   const [password,setPassword]=useState('');
-// const signupSubmitHandler = async Promise => {
-//   const signUpStatus = await signupFunc({
-//     variables: {
-//       Name:Name,Password:Password},
-//         })
-//         console.log("signupdata",signUpStatus)
-//   }
 
 const submitHandler=(e)=>{
   e.preventDefault();
@@ -30,6 +24,19 @@ const submitHandler=(e)=>{
   setPassword(e.target.password.value);
   console.log(e.target.email.value);
 }
+
+axios.get('/api/notes', {
+  email: email,
+  password: password,
+  },
+
+).then(response=>{
+  console.log(response);
+
+}) .catch(error=>{
+  console.log(error);
+});
+
 return (
 
 <div className="App">

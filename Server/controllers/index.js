@@ -5,18 +5,20 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
   console.log("resss==>", req)
 
-  if (!req.body.Name) {
+  if (!req.body.email) {
     
     res.status(400).send({
       message: "Content can not be empty !",
     });
+    console.log(req.body.email)
     return;
+    
   }
 
   const note = {
-    Name: req.body.Name,
-    Password: req.body.Password,
-    // published: req.body.published ? req.body.published : false,
+    email: req.body.email,
+    password: req.body.password,
+
   };
 
   Notes.create(note)
@@ -25,13 +27,13 @@ exports.create = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while create the Notes",
+        message: err.message || "Some error occurred while create the data",
       });
     });
 };
 
 exports.findAll = (req, res) => {
-  const Name = req.query.Name;
+  const Name = req.query.email;
 
   Notes.findAll()
     .then((data) => {
@@ -39,7 +41,7 @@ exports.findAll = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while retrieving Notes",
+        message: err.message || "Some error occured while retrieving data",
       });
     });
 };
@@ -57,38 +59,6 @@ exports.findOne = (req, res) => {
     });
 };
 
-// exports.update = (req, res) => {
-//   const id = req.params.id;
 
-//   Notes.update(req.body, {
-//     where: { id: id },
-//   }).then((data) => {
-//     if (data) {
-//       res.send({
-//         message: "Note was updated successfully",
-//       });
-//     } else {
-//       res.send({
-//         message: `Cannot update Note with id=${id}`,
-//       });
-//     }
-//   });
-// };
 
-// exports.delete = (req, res) => {
-//   const id = req.params.id;
 
-//   Notes.destroy({
-//     where: { id: id },
-//   }).then((data) => {
-//     if (data) {
-//       res.send({
-//         message: "Note was delete successfully!",
-//       });
-//     } else {
-//       res.send({
-//         message: `Cannot delete Note with id=${id}`,
-//       });
-//     }
-//   });
-// };

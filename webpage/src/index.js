@@ -19,18 +19,7 @@ const rootElement = document.getElementById("root");
       </Switch>
       </BrowserRouter>,
       rootElement
-// const rootElement = document.getElementById("root");
 
-// ReactDOM.render(
-
-  
-//     <BrowserRouter>
-//        <Switch>
-//         <Route exact path="/App" component={App} />
-//         <Route path="/sss" component={Signup} />
-//       </Switch>
-//       </BrowserRouter>,
-//       rootElement
 
 );
 

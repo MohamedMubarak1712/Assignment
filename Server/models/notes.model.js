@@ -2,15 +2,13 @@ const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
   const Note = sequelize.define("note", {
-    Name: {
+    email: {
       type: Sequelize.STRING,
     },
-    Password: {
+    password: {
       type: Sequelize.STRING,
     },
-    // published: {
-    //   type: Sequelize.BOOLEAN,
-    // },
+  
   });
   return Note;
 };
